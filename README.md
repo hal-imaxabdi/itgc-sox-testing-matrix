@@ -1,38 +1,122 @@
-# ITGC SOX Testing Matrix — NovaPay (Simulated Audit)
+# ITGC Testing Matrix, SOX Compliance Simulation
 
-## What this is
-A simulated IT General Controls (ITGC) audit built around a fictional fintech 
-company, NovaPay, modeled on how SOX compliance testing actually works. This 
-project was built to develop hands-on skills for an IT Audit internship 
-application.
+I built this project to teach myself how IT auditors test IT General Controls (ITGCs) in a SOX compliance environment.
 
-## The scenario
-NovaPay is a fictional mid-size fintech that processes online payments for 
-small merchants and is publicly traded, making it subject to SOX. The system 
-in scope is NovaPay's Payment Processing & Ledger System — the application 
-that records transactions and feeds the company's financial statements.
+Instead of only reading about SOX and ITGCs, I created a simulated audit for a fictional fintech company, NovaPay. The goal was to understand how an auditor goes from a control statement to evidence, testing, findings, and recommendations.
 
-## What's inside
-The workbook tests controls across three ITGC pillars:
-- **Access Management** — who can log into the financial system, and how 
-  access is removed when someone leaves
-- **Change Management** — how code changes to the system are reviewed and 
-  approved before going live, including segregation of duties
-- **Data Operations** — whether financial data is backed up, whether those 
-  backups actually work, and whether automated jobs are monitored for 
-  silent failure
+## Workbook Preview
 
-Each control includes a testing procedure, sample size, evidence requested, 
-and a Pass/Fail/Exception result. Two controls were deliberately failed to 
-simulate realistic audit findings, which are documented in the Findings 
-Summary tab with risk ratings and remediation plans.
+![ITGC Testing Matrix overview](./screenshot.png)
 
-## What I learned
-- How to translate a compliance requirement (SOX) into specific, testable 
-  IT controls
-- How auditors design a testing procedure and sample size rather than just 
-  writing a policy
-- How to write an audit finding: root cause, risk rating, and a realistic 
-  remediation recommendation
+The workbook simulates testing across three areas:
 
+- Access Management
+- Change Management
+- Data Operations
 
+For each control, I documented the control objective, testing procedure, sample, evidence, test result, and any exceptions identified.
+
+## Audit Results
+
+The simulation contains 10 controls:
+
+- 8 controls passed
+- 2 controls failed
+- 2 findings were documented
+
+I intentionally included control failures so the project reflects the process of identifying and documenting exceptions.
+
+## Areas Tested
+
+### Access Management
+
+Tests whether access to the financial system is properly granted, reviewed, and removed.
+
+Examples:
+
+- Manager approval before new access is granted
+- Removal of access after employee termination
+- Periodic review of privileged accounts
+
+One control failed because a terminated employee retained system access beyond the required 24-hour period.
+
+### Change Management
+
+Tests whether changes to production systems follow appropriate review and approval procedures.
+
+Examples:
+
+- Code review before deployment
+- Segregation of duties
+- Review of emergency changes
+
+One control failed because the same engineer committed and deployed a production change without the required independent separation of duties.
+
+### Data Operations
+
+Tests controls around financial data backups and system operations.
+
+Examples:
+
+- Daily backups
+- Backup restoration testing
+- Failed batch job monitoring
+- Access to backup configuration
+
+## Findings
+
+### Finding 01, Terminated User Access
+
+A terminated employee's access remained active beyond the required 24-hour period.
+
+Risk: Medium
+
+Recommendation:
+
+Improve the HR-to-IT deprovisioning process and introduce automated notifications or workflow controls so termination events reach the appropriate IT team.
+
+### Finding 02, Segregation of Duties
+
+One engineer both committed and deployed a production change without the required independent separation of duties.
+
+Risk: High
+
+Recommendation:
+
+Enforce separation of duties through the CI/CD process so production deployments require an independent reviewer or approver.
+
+## What I Learned
+
+The biggest thing I learned from this project was the difference between a control and a control test.
+
+A company might state:
+
+"Employee access is removed when the employee leaves."
+
+An auditor needs evidence to determine whether the control actually operated as stated.
+
+For example, the auditor might compare termination records with system access records and check whether access was removed within the required timeframe.
+
+Building the testing procedures myself helped me understand this process better than simply reading about ITGCs.
+
+## Tools and Concepts
+
+- Microsoft Excel
+- IT General Controls
+- SOX compliance concepts
+- Access Management
+- Change Management
+- Segregation of Duties
+- Backup and Recovery Controls
+- Audit Testing
+- Risk and Control Assessment
+
+## Project File
+
+[ITGC_SOX_Testing_Matrix_NovaPay.xlsx](./ITGC_SOX_Testing_Matrix_NovaPay.xlsx)
+
+The Excel workbook contains the complete simulated testing matrix, evidence references, test results, and findings summary.
+
+## Disclaimer
+
+This is a fictional educational project created to practice IT audit and ITGC testing concepts. NovaPay, its systems, users, evidence, and audit results are simulated.
